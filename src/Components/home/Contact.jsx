@@ -37,32 +37,23 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-        await SendEmail({
-        to: 'sufikolkol@gmail.com',   // ✅ always send here
-        replyTo: formData.email,      // ✅ user’s email for replying
-        subject: `New Contact Form Submission from ${formData.name}`,
-        body: `
-    📩 New Contact Form Submission
+      await SendEmail({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        message: formData.message,
+      });
 
-    Full Name: ${formData.name}
-    Email: ${formData.email}
-    Company: ${formData.company}
-    Phone: ${formData.phone}
-
-    Project Details:
-    ${formData.message}
-        `
-        });
-
-        setSubmitted(true);
-        setFormData({ name: '', email: '', company: '', phone: '', message: '' });
+      setSubmitted(true);
+      setFormData({ name: '', email: '', company: '', phone: '', message: '' });
     } catch (error) {
-        console.error('Error sending email:', error);
-        setError('Failed to send message. Please try again later.');
+      console.error('Error sending email:', error);
+      setError('Failed to send message. Please try again later.');
     }
 
     setIsSubmitting(false);
-    };
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -92,52 +83,8 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* ✅ Updated Email */}
-          <Card className="p-8 border-0 shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-14 h-14 bg-gradient-to-r from-teal-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
-              <Mail className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">Email Us</h3>
-            <p className="text-gray-600 mb-4">Our team responds within 24 hours</p>
-            <a href="mailto:info@i-tech.pk" className="text-teal-600 font-medium hover:text-teal-700">
-              info@i-tech.pk
-            </a>
-          </Card>
-
-          {/* ✅ Updated Phone */}
-          <Card className="p-8 border-0 shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
-              <Phone className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">Call Us</h3>
-            <p className="text-gray-600 mb-4">Mon-Fri from 8am to 6pm</p>
-            <a href="tel:0518899949" className="text-teal-600 font-medium hover:text-teal-700">
-              (051)-8899949
-            </a>
-          </Card>
-
-          {/* ✅ Updated Address */}
-          <Card className="p-8 border-0 shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-4">
-              <MapPin className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">Visit Us</h3>
-            <p className="text-gray-600 mb-4">Come say hello at our office</p>
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Office+%23+109,+1st+Floor,+Cubator+1ne,+Near+Park+Road,+Islamabad"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-700 not-italic hover:text-teal-600"
-            >
-              Office # 109, 1st Floor,<br />
-              Cubator 1ne, Near Park Road,<br />
-              Islamabad
-            </a>
-          </Card>
-        </div>
-
         {/* ✅ Form */}
+        
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -217,6 +164,52 @@ export default function Contact() {
             )}
           </Card>
         </motion.div>
+
+        <div className="grid lg:grid-cols-3 gap-12 mt-12 max-w-7xl m-auto">
+          {/* ✅ Updated Email */}
+          <Card className="p-8 border-0 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-14 h-14 bg-gradient-to-r from-teal-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
+              <Mail className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Email Us</h3>
+            <p className="text-gray-600 mb-4">Our team responds within 24 hours</p>
+            <a href="mailto:info@i-tech.pk" className="text-teal-600 font-medium hover:text-teal-700">
+              info@i-tech.pk
+            </a>
+          </Card>
+
+          {/* ✅ Updated Phone */}
+          <Card className="p-8 border-0 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
+              <Phone className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Call Us</h3>
+            <p className="text-gray-600 mb-4">Mon-Fri from 8am to 6pm</p>
+            <a href="tel:0518899949" className="text-teal-600 font-medium hover:text-teal-700">
+              (051)-8899949
+            </a>
+          </Card>
+
+          {/* ✅ Updated Address */}
+          <Card className="p-8 border-0 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <MapPin className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Visit Us</h3>
+            <p className="text-gray-600 mb-4">Come say hello at our office</p>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Office+%23+109,+1st+Floor,+Cubator+1ne,+Near+Park+Road,+Islamabad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-700 not-italic hover:text-teal-600"
+            >
+              Office # 109, 1st Floor,<br />
+              Cubator 1ne, Near Park Road,<br />
+              Islamabad
+            </a>
+          </Card>
+        </div>
+
       </div>
     </section>
   );

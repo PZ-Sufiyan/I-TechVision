@@ -1,7 +1,25 @@
-export function SendEmail({ to, subject, message }) {
-  // Placeholder — replace with your actual email service logic
-  console.log("Sending email to:", to, subject, message);
+// Core.js
+export async function SendEmail(formData) {
+  try {
+    const response = await fetch("http://localhost:8090/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        message: formData.message,
+      }),
+    });
 
-  // You could later hook this to an API (like EmailJS, Resend, Nodemailer, etc.)
-  return { success: true };
+    if (!response.ok) {
+      throw new Error("Failed to send email");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error sending email:", error);
+    throw error;
+  }
 }
