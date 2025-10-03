@@ -1,7 +1,7 @@
 // Core.js
 export async function SendEmail(formData) {
   try {
-    const response = await fetch("http://localhost:8090/send-email", {
+    const response = await fetch("https://i-tech-vision-backend.vercel.app/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
