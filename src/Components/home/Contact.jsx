@@ -173,8 +173,8 @@ export default function Contact() {
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-2">Email Us</h3>
             <p className="text-gray-600 mb-4">Our team responds within 24 hours</p>
-            <a href="mailto:info@i-tech.pk" className="text-teal-600 font-medium hover:text-teal-700">
-              info@i-tech.pk
+            <a href="mailto:info@itech-vision.com" className="text-teal-600 font-medium hover:text-teal-700">
+              info@itech-vision.com
             </a>
           </Card>
 

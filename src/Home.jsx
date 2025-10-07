@@ -7,6 +7,7 @@ import Testimonials from './Components/home/Testimonials';
 import About from './Components/home/About';
 import Contact from './Components/home/Contact';
 import Footer from './Components/home/Footer';
+import Training from './Components/home/Training';
 
 export default function Home() {
   const contactRef = useRef(null);
@@ -22,6 +23,9 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Navigation onContactClick={scrollToContact} />
       <Hero onContactClick={scrollToContact} />
+      <div id="training">
+        <Training />
+      </div>
       <Services />
       <div id="portfolio">
         <Portfolio />

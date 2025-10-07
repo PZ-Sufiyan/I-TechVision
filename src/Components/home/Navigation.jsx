@@ -16,6 +16,7 @@ export default function Navigation({ onContactClick }) {
   }, []);
 
   const navLinks = [
+    { label: 'Trainning', href: '#training' },
     { label: 'Services', href: '#services' },
     { label: 'Portfolio', href: '#portfolio' },
     { label: 'About', href: '#about' },
