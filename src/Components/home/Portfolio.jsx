@@ -4,59 +4,36 @@ import { Card } from '@/Components/ui/card';
 import { Badge } from '@/Components/ui/badge';
 import { Button } from '@/Components/ui/button';
 import { ExternalLink, Award } from 'lucide-react';
+import skincareImage from '@/assets/Smart_SkinCare.png';
 
 const portfolioItems = [
   {
-    title: "Smart Factory Management System",
-    category: "IoT & Automation",
-    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800",
-    description: "Comprehensive IoT platform managing 500+ sensors across multiple production lines with real-time analytics and predictive maintenance.",
-    results: ["40% reduction in downtime", "25% increase in efficiency", "$2M annual savings"],
-    tags: ["IoT", "Cloud", "Analytics"]
+    title: "Innovative Wellness Technology for Everyday Use",
+    category: "Health & Wellness",
+    image: "https://s3.eu-west-1.amazonaws.com/mobidev.biz.cloudfront/2024/04/fitness-wellness-technology-trends-and-innovations.jpg?w=800",
+    description: "Led complete design and development of a cutting-edge health and wellness device utilizing Pulse Electro-Magnetic Field (PEMF) technology. This at-home appliance enhances physical and mental well-being through a user-friendly, science-backed solution.",
+    results: ["Collaborative PEMF system design", "Cost-optimized for scalable production", "Compliance with health and safety standards", "Manufacturing-ready prototype"],
+    tags: ["PEMF", "Wellness", "Product Design", "Safety"]
   },
   {
-    title: "Medical Device Controller",
-    category: "Embedded Systems",
-    image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800",
-    description: "FDA-compliant embedded controller for life-critical medical equipment with redundant safety systems and real-time monitoring.",
-    results: ["FDA 510(k) cleared", "99.999% uptime", "Zero safety incidents"],
-    tags: ["Medical", "Safety-Critical", "ARM"]
+    title: "Smart Skincare Innovation with IoT and Automation",
+    category: "Consumer Electronics",
+    image: skincareImage,
+    description: "Created a smart, connected device that redefines consumer skincare interaction. Features a sleek base docking up to three skincare items, using integrated load sensors and IoT microcontroller to monitor daily usage and trigger automated reordering.",
+    results: ["Real-time weight monitoring", "Predictive reordering algorithm", "Cross-platform mobile app", "E-commerce integration with DHL"],
+    tags: ["IoT", "Load Sensors", "Mobile App", "E-commerce", "Arduino"]
   },
   {
-    title: "Autonomous Warehouse Robot",
-    category: "Product Development",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800",
-    description: "Developed autonomous mobile robot with SLAM navigation for warehouse logistics, from concept to production in 18 months.",
-    results: ["150 units deployed", "3x faster order fulfillment", "Patent pending"],
-    tags: ["Robotics", "AI", "Navigation"]
-  },
-  {
-    title: "Energy Management Platform",
-    category: "Smart Manufacturing",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800",
-    description: "AI-powered energy optimization system for industrial facilities with predictive load management and cost reduction.",
-    results: ["30% energy savings", "ROI in 14 months", "Carbon footprint reduced"],
-    tags: ["AI", "Energy", "Sustainability"]
-  },
-  {
-    title: "High-Speed Data Acquisition Board",
-    category: "Circuit Design",
+    title: "IoT-Based Solenoid Control System Using Raspberry Pi",
+    category: "Industrial IoT",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
-    description: "12-layer PCB design for high-speed data acquisition with 16-bit resolution at 1MSPS, EMI compliant design.",
-    results: ["1MHz sampling rate", "±0.1% accuracy", "CE certified"],
-    tags: ["PCB", "High-Speed", "Analog"]
-  },
-  {
-    title: "Smart Home Security System",
-    category: "Firmware & IoT",
-    image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=800",
-    description: "End-to-end security system with computer vision, cloud connectivity, and mobile app control with end-to-end encryption.",
-    results: ["50K+ installations", "4.8★ app rating", "AES-256 encryption"],
-    tags: ["Security", "Computer Vision", "Mobile"]
+    description: "Developed a modular and scalable IoT-based control system using Raspberry Pi to enable intelligent management of solenoid valves for various automation applications with remote operation capabilities.",
+    results: ["Wi-Fi based MQTT communication", "Python control algorithms", "Safety protection circuits", "REST API via Flask"],
+    tags: ["Raspberry Pi", "MQTT", "Python", "Automation", "Flask"]
   }
 ];
 
-const categories = ["All", "IoT & Automation", "Embedded Systems", "Product Development", "Smart Manufacturing", "Circuit Design", "Firmware & IoT"];
+const categories = ["All", "Health & Wellness", "Consumer Electronics", "Industrial IoT"];
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState("All");
