@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/Components/ui/button';
 import { Menu, X, ChevronRight } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 export default function Navigation({ onContactClick }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,8 +48,8 @@ export default function Navigation({ onContactClick }) {
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center gap-3"
             >
-              <div className="w-10 h-10 bg-gradient-to-r from-teal-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">I</span>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center">
+                <img src={logo} alt="ItechVision Logo" className="w-8 h-8" />
               </div>
               <span className={`text-2xl font-bold ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
                 ItechVision

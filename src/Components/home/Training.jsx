@@ -129,17 +129,13 @@ export default function Training() {
                     href="https://wa.me/923445494949"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold shadow-lg hover:shadow-xl hover:text-white transition-all duration-300"
                     >
                     Contact on WhatsApp
                     </a>
                 </div>
             </div>
             <div className="mt-12 grid grid-cols-2 gap-6">
-              <div className="text-center p-6 bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl">
-                <div className="text-2xl font-bold text-teal-600 mb-2">Deadline</div>
-                <div className="text-gray-600 font-medium">Oct 20, 2025</div>
-              </div>
               <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl">
                 <div className="text-2xl font-bold text-blue-600 mb-2">Session Start</div>
                 <div className="text-gray-600 font-medium">Nov 3, 2025</div>
