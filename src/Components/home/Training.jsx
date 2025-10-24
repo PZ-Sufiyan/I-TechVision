@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card } from '@/Components/ui/card';
-import { GraduationCap, Briefcase, Globe2, Cpu, Printer, Cpu as Embedded, CircuitBoard, Wifi, ChevronLeft, ChevronRight } from 'lucide-react';
+import { GraduationCap, Briefcase, Globe2, Cpu, Printer, Cpu as Embedded, CircuitBoard, Wifi, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import training from '../../assets/training.jpg';
+import InternshipForm from '../forms/InternshipForm';
 
 const highlights = [
   {
@@ -80,6 +81,7 @@ const trainingModules = [
 
 export default function Training() {
   const [currentModule, setCurrentModule] = useState(0);
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
 
   const nextModule = () => {
     setCurrentModule((prev) => (prev + 1) % trainingModules.length);
@@ -87,6 +89,14 @@ export default function Training() {
 
   const prevModule = () => {
     setCurrentModule((prev) => (prev - 1 + trainingModules.length) % trainingModules.length);
+  };
+
+  const openApplicationModal = () => {
+    setShowApplicationModal(true);
+  };
+
+  const closeApplicationModal = () => {
+    setShowApplicationModal(false);
   };
 
   return (
@@ -132,14 +142,12 @@ export default function Training() {
                     >
                     Contact on WhatsApp
                     </a>
-                    <a
-                    href="/apply" // <-- Replace with your form link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    Apply Now
-                  </a>
+                    <button
+                      onClick={openApplicationModal}
+                      className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      Apply Now
+                    </button>
                 </div>
             </div>
             <div className="mt-12 grid grid-cols-2 gap-6">
@@ -333,6 +341,52 @@ export default function Training() {
           </div>
         </motion.div>
       </div>
+
+      {/* Application Modal */}
+      <AnimatePresence>
+        {showApplicationModal && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+              onClick={closeApplicationModal}
+            />
+            
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="fixed inset-4 z-50 flex items-center justify-center p-4"
+            >
+              <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
+                {/* Modal Header */}
+                <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-teal-50 to-blue-50">
+                  <div className="flex items-center gap-3">
+                    <GraduationCap className="w-6 h-6 text-teal-600" />
+                    <h2 className="text-2xl font-bold text-slate-900">Apply for Internship</h2>
+                  </div>
+                  <button
+                    onClick={closeApplicationModal}
+                    className="p-2 hover:bg-white rounded-lg transition-colors duration-200"
+                  >
+                    <X className="w-6 h-6 text-gray-500 hover:text-gray-700" />
+                  </button>
+                </div>
+                
+                {/* Modal Content */}
+                <div className="max-h-[calc(90vh-80px)] overflow-y-auto">
+                  <InternshipForm onClose={closeApplicationModal} />
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
