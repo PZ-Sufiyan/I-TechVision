@@ -123,8 +123,7 @@ export default function Training() {
                     Fees: Rs 15,000 / Month
                 </p>
 
-                {/* ✅ WhatsApp Contact Button */}
-                <div className="pt-4">
+                <div className="pt-4 flex flex-col sm:flex-row sm:items-center sm:gap-4 space-y-4 sm:space-y-0">
                     <a
                     href="https://wa.me/923445494949"
                     target="_blank"
@@ -133,6 +132,14 @@ export default function Training() {
                     >
                     Contact on WhatsApp
                     </a>
+                    <a
+                    href="/apply" // <-- Replace with your form link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Apply Now
+                  </a>
                 </div>
             </div>
             <div className="mt-12 grid grid-cols-2 gap-6">
