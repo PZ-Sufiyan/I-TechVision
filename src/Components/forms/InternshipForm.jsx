@@ -371,7 +371,6 @@ const InternshipForm = ({ onClose }) => {
                   <option value="">Select duration</option>
                   <option value="3 months">3 Months</option>
                   <option value="6 months">6 Months</option>
-                  <option value="1 year">1 Year</option>
                 </select>
               </div>
             </div>
