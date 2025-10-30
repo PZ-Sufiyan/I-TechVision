@@ -368,7 +368,7 @@ export default function Training() {
                 <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-teal-50 to-blue-50">
                   <div className="flex items-center gap-3">
                     <GraduationCap className="w-6 h-6 text-teal-600" />
-                    <h2 className="text-2xl font-bold text-slate-900">Apply for Internship</h2>
+                    <h2 className="text-2xl font-bold text-slate-900">Apply for Training</h2>
                   </div>
                   <button
                     onClick={closeApplicationModal}
