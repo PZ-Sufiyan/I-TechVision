@@ -27,7 +27,6 @@ const highlights = [
     description: "Develop competencies that prepare you for local and international career opportunities."
   }
 ];
-
 const trainingModules = [
   {
     icon: Printer,
