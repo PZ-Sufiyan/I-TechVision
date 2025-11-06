@@ -192,37 +192,32 @@ export default function Training() {
 							transition={{ duration: 0.6 }}
 							className="space-y-8 pt-8" // Changed from grid to space-y for vertical stacking
 						>
-							{/* Info Cards Row */}
-							<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-								{/* Session Info Card */}
-								<div className="w-full text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl shadow-sm">
-									<div className="text-2xl font-bold text-blue-600 mb-2">Session Start</div>
-									<div className="text-gray-600 font-medium">Nov 3, 2025</div>
+							{/* 2-column layout: left = fee, right = 2 rows for buttons */}
+							<div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
+								{/* Left: Program Fee */}
+								<div className="w-full h-full flex items-center justify-center">
+									<div className="w-full text-center p-6 bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl shadow-sm">
+										<div className="text-2xl font-bold text-teal-600 mb-2">Program Fee</div>
+										<div className="text-gray-600 font-medium">Rs 15,000 / Month</div>
+									</div>
 								</div>
-
-								{/* Fee Info Card */}
-								<div className="w-full text-center p-6 bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl shadow-sm">
-									<div className="text-2xl font-bold text-teal-600 mb-2">Program Fee</div>
-									<div className="text-gray-600 font-medium">Rs 15,000 / Month</div>
+								{/* Right: 2 rows for buttons */}
+								<div className="flex flex-col gap-4 h-full justify-center">
+									<button
+										onClick={openApplicationModal}
+										className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+									>
+										Apply Now
+									</button>
+									<a
+										href="https://wa.me/923445494949"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold shadow-lg hover:shadow-xl hover:text-white transition-all duration-300 text-center"
+									>
+										Contact on WhatsApp
+									</a>
 								</div>
-							</div>
-
-							{/* Action Buttons - Now in a separate row */}
-							<div className="flex flex-col sm:flex-row gap-4">
-								<a
-									href="https://wa.me/923445494949"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="w-full sm:w-1/2 px-6 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold shadow-lg hover:shadow-xl hover:text-white transition-all duration-300 text-center"
-								>
-									Contact on WhatsApp
-								</a>
-								<button
-									onClick={openApplicationModal}
-									className="w-full sm:w-1/2 px-6 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-center"
-								>
-									Apply Now
-								</button>
 							</div>
 						</motion.div>
 					</div>

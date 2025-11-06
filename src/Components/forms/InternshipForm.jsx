@@ -41,8 +41,7 @@ const InternshipForm = ({ onClose }) => {
 
     // Check required fields
     const requiredFields = [
-      'fullName', 'email', 'phone', 'university', 'degree',
-      'semester', 'major', 'internshipField', 'startDate', 'duration', 'coverLetter'
+      'fullName', 'email', 'phone', 'internshipField', 'duration'
     ];
 
     requiredFields.forEach(field => {
@@ -51,14 +50,9 @@ const InternshipForm = ({ onClose }) => {
       }
     });
 
-    // Check cover letter length
-    if (formData.coverLetter && formData.coverLetter.length < 50) {
-      errors.push('Cover letter must be at least 50 characters');
-    }
-
-    // Check phone format (basic validation)
-    if (formData.phone && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(formData.phone)) {
-      errors.push('Please enter a valid phone number');
+    // Check phone format (must start with 03 and be exactly 11 digits)
+    if (formData.phone && !/^03\d{9}$/.test(formData.phone)) {
+      errors.push('Phone number must start with 03 and be exactly 11 digits');
     }
 
     return errors;
@@ -158,10 +152,8 @@ const InternshipForm = ({ onClose }) => {
           <p>Please check that all required fields are filled correctly.</p>
           <p className="text-sm mt-2">Common issues:</p>
           <ul className="list-disc list-inside mt-1 text-sm">
-            <li>Cover letter must be at least 50 characters</li>
-            <li>Phone number format must be valid</li>
-            <li>All required fields must be filled</li>
-            <li>Start date must be selected</li>
+            <li>Phone number must start with 03 and be exactly 11 digits (e.g., 03060657065)</li>
+            <li>All required fields must be filled (Full Name, Email, Phone, Internship Field, Duration)</li>
           </ul>
         </motion.div>
       )}
@@ -223,7 +215,7 @@ const InternshipForm = ({ onClose }) => {
                     onChange={handleChange}
                     required
                     className="w-full px-10 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all"
-                    placeholder="+92 300 1234567"
+                    placeholder="03123456789"
                   />
                 </div>
               </div>
@@ -240,14 +232,13 @@ const InternshipForm = ({ onClose }) => {
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  University/College *
+                  University/College
                 </label>
                 <input
                   type="text"
                   name="university"
                   value={formData.university}
                   onChange={handleChange}
-                  required
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all"
                   placeholder="Your university name"
                 />
@@ -255,14 +246,13 @@ const InternshipForm = ({ onClose }) => {
               
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Degree Program *
+                  Degree Program
                 </label>
                 <input
                   type="text"
                   name="degree"
                   value={formData.degree}
                   onChange={handleChange}
-                  required
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all"
                   placeholder="e.g., BSCS, BSEE, BBA"
                 />
@@ -270,14 +260,13 @@ const InternshipForm = ({ onClose }) => {
               
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Current Semester *
+                  Current Semester
                 </label>
                 <input
                   type="text"
                   name="semester"
                   value={formData.semester}
                   onChange={handleChange}
-                  required
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all"
                   placeholder="e.g., 7th, 8th, Graduate"
                 />
@@ -285,14 +274,13 @@ const InternshipForm = ({ onClose }) => {
               
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Major/Department *
+                  Major/Department
                 </label>
                 <input
                   type="text"
                   name="major"
                   value={formData.major}
                   onChange={handleChange}
-                  required
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all"
                   placeholder="Your major field of study"
                 />
@@ -342,7 +330,7 @@ const InternshipForm = ({ onClose }) => {
               
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Preferred Start Date *
+                  Preferred Start Date
                 </label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
@@ -351,7 +339,6 @@ const InternshipForm = ({ onClose }) => {
                     name="startDate"
                     value={formData.startDate}
                     onChange={handleChange}
-                    required
                     className="w-full px-10 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all"
                   />
                 </div>
@@ -384,13 +371,12 @@ const InternshipForm = ({ onClose }) => {
             
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Cover Letter *
+                Cover Letter (Optional)
               </label>
               <textarea
                 name="coverLetter"
                 value={formData.coverLetter}
                 onChange={handleChange}
-                required
                 rows="4"
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all resize-vertical"
                 placeholder="Tell us about your interests, career goals, and why you want to join ITech Vision..."
@@ -449,7 +435,7 @@ const InternshipForm = ({ onClose }) => {
             </button>
             
             <p className="text-xs text-slate-500 mt-2 text-center">
-              * Required fields. We'll contact you within 3-5 business days after reviewing your application.
+              * Required fields: Full Name, Email, Phone Number (11 digits starting with 03), Internship Field, Duration. We'll contact you within 3-5 business days after reviewing your application.
             </p>
           </div>
         </form>
